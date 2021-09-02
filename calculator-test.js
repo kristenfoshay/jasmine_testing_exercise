@@ -21,11 +21,23 @@ it("should return a result with 2 decimal places", function() {
 });
 
 
+it ("should setup the initial values", function(){
+  document.getElementById("loan-amount").value = 700000;
+  document.getElementById("loan-years").value = 30;
+  document.getElementById("loan-rate").value = 2;
+  console.log("it works",setupInitialValues());
+  expect(setupInitialValues()).toEqual({
+    amount:"700000",
+    years:"30",
+    rate:"2"}
+  );
+});
+
 
 it ("should update initial values based on input", function(){
   document.getElementById("loan-amount").value = 4000;
   document.getElementById("loan-years").value = 5;
-  document.getElementById("loan-rate").value = 2;
+ document.getElementById("loan-rate").value = 2;
 
   expect(getCurrentUIValues()).toEqual({
     amount:"4000",
@@ -34,9 +46,3 @@ it ("should update initial values based on input", function(){
   );
 });
 
-it ("should setup the initial values", function(){
-  document.getElementById("loan-amount").value = 700000;
-  document.getElementById("loan-years").value = 30;
-  document.getElementById("loan-rate").value = 2;
-  expect(setupInitialValues()).not.toBe(null)
-})
